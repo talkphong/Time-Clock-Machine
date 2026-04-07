@@ -18,19 +18,22 @@ namespace MyServer.Controllers
         [HttpPost("checkin")]
         public async Task<IActionResult> CheckIn([FromBody] CheckInRequest request)
         {
-            var log = new TimeLog
+            var log_Attendances = new Attendances
             {
-                EmployeeId = request.EmployeeId,
-                Time = request.Time
+                UserId = request.UserId,
+                Time = request.Time,
+                Type = request.Type,
+                Source = request.Source,
+                Status = request.Status
             };
 
-            _context.TimeLogs.Add(log);
+            _context.Attendances.Add(log_Attendances);
             await _context.SaveChangesAsync();
 
             return Ok(new
             {
                 message = "Check in success",
-                employeeId = request.EmployeeId,
+                UserId = request.UserId,
                 time = request.Time
             });
         }
@@ -38,7 +41,10 @@ namespace MyServer.Controllers
 
     public class CheckInRequest
     {
-        public int EmployeeId { get; set; }
+        public int UserId { get; set; }
         public DateTime Time { get; set; }
+        public String Type { get; set; }
+        public String Source { get; set; }
+        public String Status { get; set; }
     }
 }

@@ -159,3 +159,4 @@ C:\Users\Windows\OneDrive\Desktop\Time-Clock-Machine\MyServer\bin\Debug\net10.0\
 C:\Users\Windows\OneDrive\Desktop\Time-Clock-Machine\MyServer\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Windows\OneDrive\Desktop\Time-Clock-Machine\MyServer\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Windows\OneDrive\Desktop\Time-Clock-Machine\MyServer\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Windows\OneDrive\Desktop\Time-Clock-Machine\MyServer\obj\Debug\net10.0\MyServer.sourcelink.json

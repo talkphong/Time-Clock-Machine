@@ -9,7 +9,7 @@ namespace MyServer.Data
             : base(options)
         {
         }
-        public DbSet<TimeLog> TimeLogs { get; set; }
+        public DbSet<Attendances> Attendances { get; set; }
 
     }
 }
