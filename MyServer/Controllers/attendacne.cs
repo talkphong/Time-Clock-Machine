@@ -37,6 +37,15 @@ namespace MyServer.Controllers
                 time = request.Time
             });
         }
+
+        [HttpGet("{UserId}")]
+        public IActionResult GetAttendance(int UserId)
+        {
+            var attendance = _context.Attendances
+                .Where(x => x.UserId == UserId)
+                .ToList();
+            return Ok(attendance);
+        }
     }
 
     public class CheckInRequest
