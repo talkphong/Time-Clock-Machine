@@ -123,3 +123,74 @@ CREATE TABLE Logs (
     CONSTRAINT FK_Log_User FOREIGN KEY (UserId)
         REFERENCES Users(Id)
 );
+
+
+
+
+-- Departments
+INSERT INTO Departments (Name) VALUES
+(N'IT'),
+(N'Nhân sự'),
+(N'Kế toán'),
+(N'Kinh doanh');
+
+-- Users
+INSERT INTO Users (EmployeeCode, FullName, Email, PasswordHash, Role, DepartmentId)
+VALUES
+('EMP001', N'Nguyễn Văn A', 'a@gmail.com', 'hash1', 'Admin', 1),
+('EMP002', N'Trần Thị B', 'b@gmail.com', 'hash2', 'HR', 2),
+('EMP003', N'Lê Văn C', 'c@gmail.com', 'hash3', 'Leader', 1),
+('EMP004', N'Phạm Văn D', 'd@gmail.com', 'hash4', 'Employee', 1),
+('EMP005', N'Hoàng Thị E', 'e@gmail.com', 'hash5', 'Employee', 3);
+
+-- FaceData
+INSERT INTO FaceData (UserId, Embedding, ImagePath)
+VALUES
+(4, 0x1234, N'/images/user4.jpg'),
+(5, 0x5678, N'/images/user5.jpg');
+
+-- Attendances
+INSERT INTO Attendances (UserId, Time, Type, Source, Status)
+VALUES
+(4, GETDATE(), 'CheckIn', 'Machine', 'Valid'),
+(4, DATEADD(HOUR, 8, GETDATE()), 'CheckOut', 'Machine', 'Valid'),
+(5, GETDATE(), 'CheckIn', 'Machine', 'Late');
+
+-- LeaveRequests
+INSERT INTO LeaveRequests (UserId, FromDate, ToDate, Reason, Status, ApprovedBy)
+VALUES
+(4, '2026-04-10', '2026-04-12', N'Nghỉ ốm', 'Approved', 2),
+(5, '2026-04-15', '2026-04-16', N'Việc gia đình', 'Pending', NULL);
+
+-- AttendanceAdjustments
+INSERT INTO AttendanceAdjustments (UserId, Date, CheckInTime, CheckOutTime, Reason, Status, ApprovedBy)
+VALUES
+(4, '2026-04-05', '2026-04-05 08:05:00', '2026-04-05 17:00:00', N'Quên chấm công', 'Approved', 3),
+(5, '2026-04-05', NULL, NULL, N'Quên checkin', 'Pending', NULL);
+
+-- OvertimeRecords
+INSERT INTO OvertimeRecords (UserId, Date, StartTime, EndTime, TotalHours, Status, ApprovedBy)
+VALUES
+(4, '2026-04-06', '2026-04-06 18:00:00', '2026-04-06 21:00:00', 3, 'Approved', 3),
+(5, '2026-04-06', '2026-04-06 18:30:00', '2026-04-06 20:00:00', 1.5, 'Pending', NULL);
+
+-- SystemConfigs
+INSERT INTO SystemConfigs ([Key], [Value])
+VALUES
+(N'WorkStartTime', N'08:00'),
+(N'WorkEndTime', N'17:00'),
+(N'AllowLateMinutes', N'15');
+
+-- Logs
+INSERT INTO Logs (UserId, Action, Description)
+VALUES
+(1, N'Login', N'Admin đăng nhập hệ thống'),
+(4, N'CheckIn', N'Nhân viên checkin'),
+(5, N'LeaveRequest', N'Gửi yêu cầu nghỉ phép');
+
+
+
+
+select * from Logs
+select * from Attendances
+select * from users 
